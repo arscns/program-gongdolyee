@@ -1,84 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>학사 일정</title>
-  </head>
-  <body>
-    <div class="date-wrap">
-      <div class="date-month">
-        <span id="month-this">2023.08</span>
-        <div class="button_wrap">
-          <button type="button" id="month-prev" class="month-move" data-ym="2023-07-01"> &lt; </button>
-          <button type="button" id="month-next" class="month-move" data-ym="2023-09-01"> &gt; </button>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <title>학교 급식</title>
+</head>
+<body>
+  <div class="date-wrap">
+    <div class="date-month">
+      <span id="month-this">2023.08</span>
+      <div class="button_wrap">
+        <button type="button" id="month-prev" class="month-move" data-ym="2023-07-01"> &lt; 이전 달</button>
+        <button type="button" id="month-next" class="month-move" data-ym="2023-09-01"> 다음 달 &gt;</button>
       </div>
-      <table class="date-month">
-        <thead>
-          <tr>
-            <th>일</th>
-            <th>월</th>
-            <th>화</th>
-            <th>수</th>
-            <th>목</th>
-            <th>금</th>
-            <th>토</th>
-          </tr>
-        </thead>
-        <tbody id="tbl-month">
-          <tr>
-            <td class="sun"><a>30</a></td>
-            <td class=""><a href="/news/schedule?date=2023-08-25">2</a></td>
-            <td class=""><a>31</a></td>
-            <td class=""><a>1</a></td>
-            <td class="today"><a>2</a></td>
-            <td class=""><a>3</a></td>
-            <td class="sat"><a>4</a></td>
-          </tr>
-        <tr>
-            <td class="sun"><a>5</a></td>
-            <td class=""><a>6</a></td>
-            <td class=""><a>7</a></td>
-            <td class=""><a>8</a></td>
-            <td class=""><a>9</a></td>
-            <td class=""><a>10</a></td>
-            <td class="sat"><a>11</a></td>
-          </tr>
-          <tr>
-            <td class="sun"><a>12</a></td>
-            <td class=""><a>13</a></td>
-            <td class=""><a>14</a></td>
-            <td class=""><a>15</a></td>
-            <td class=""><a>16</a></td>
-            <td class=""><a>17</a></td>
-            <td class="sat"><a>18</a></td>
-          </tr>
-          <tr>
-            <td class="sun"><a>19</a></td>
-            <td class=""><a>20</a></td>
-            <td class=""><a>21</a></td>
-            <td class=""><a>22</a></td>
-            <td class=""><a>23</a></td>
-            <td class=""><a>24</a></td>
-            <td class="sat"><a>25</a></td>
-          </tr>
-          
-          <tr>
-            <td class="sun"><a>26</a></td>
-            <td class=""><a>27</a></td>
-            <td class=""><a>28</a></td>
-            <td class=""><a>29</a></td>
-            <td class=""><a>30</a></td>
-            <td class=""><a>31</a></td>
-            <td class="sat"><a>1</a></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
-  </body>
+    <table class="date-month">
+      <thead>
+        <tr>
+          <th>일</th>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th>토</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <script>
+    const monthThis = document.getElementById("month-this");
+    const monthPrev = document.getElementById("month-prev");
+    const monthNext = document.getElementById("month-next");
+
+    // 현재 표시된 월을 저장할 변수
+    let currentMonth = new Date("2023-09-01"); // 9월 1일로 변경
+
+    // 이전 달로 이동하는 함수
+    function moveToPrevMonth() {
+      currentMonth.setMonth(currentMonth.getMonth() - 1);
+      updateMonthText();
+    }
+
+    // 다음 달로 이동하는 함수
+    function moveToNextMonth() {
+      currentMonth.setMonth(currentMonth.getMonth() + 1);
+      updateMonthText();
+    }
+
+    // 월 텍스트 업데이트 함수
+    function updateMonthText() {
+      const year = currentMonth.getFullYear();
+      const month = String(currentMonth.getMonth() + 1).padStart(2, "0");
+      monthThis.textContent = `${year}.${month}`;
+    }
+
+    // 버튼 클릭 이벤트 핸들러 등록
+    monthPrev.addEventListener("click", moveToPrevMonth);
+    monthNext.addEventListener("click", moveToNextMonth);
+
+    // 초기 월 텍스트 설정
+    updateMonthText();
+  </script>
+
   <style>
     p {
-      font-size: 14px; /* Increase the font size to 14 pixels */
+      font-size: 14px; /* 폰트 크기를 14픽셀로 증가 */
     }
   </style>
+</body>
 </html>
