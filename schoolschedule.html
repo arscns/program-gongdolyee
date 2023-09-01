@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html style="font-size: 3em;"> <!-- 전체적인 틀 크기를 6배로 키우기 -->
+<html style="font-size: 3em;"> <!-- 틀 크기 3배 -->
 <head>
   <meta charset="utf-8">
   <title>학교 급식</title>
 </head>
 <body>
-  <div class="date-wrap" style="font-size: 1.3em;"> <!-- 글자 크기를 2배로 키우기 -->
+  <div class="date-wrap" style="font-size: 1.3em;"> <!-- 글자 크기 1.3배 -->
     <div class="date-month">
       <span id="month-this">2023.08</span>
       <div class="button_wrap">
@@ -33,29 +33,29 @@
     const monthPrev = document.getElementById("month-prev");
     const monthNext = document.getElementById("month-next");
 
-    // 현재 표시된 월을 저장할 변수
+    // 현재 표시된 월을 저장
     let currentMonth = new Date("2023-09-01"); // 9월 1일로 변경
 
-    // 이전 달로 이동하는 함수
+    // 이전 달로 이동
     function moveToPrevMonth() {
       currentMonth.setMonth(currentMonth.getMonth() - 1);
       updateMonthText();
     }
 
-    // 다음 달로 이동하는 함수
+    // 다음 달로 이동
     function moveToNextMonth() {
       currentMonth.setMonth(currentMonth.getMonth() + 1);
       updateMonthText();
     }
 
-    // 월 텍스트 업데이트 함수
+    // 월 텍스트 업데이트
     function updateMonthText() {
       const year = currentMonth.getFullYear();
       const month = String(currentMonth.getMonth() + 1).padStart(2, "0");
       monthThis.textContent = `${year}.${month}`;
     }
 
-    // 버튼 클릭 이벤트 핸들러 등록
+    // 버튼 클릭
     monthPrev.addEventListener("click", moveToPrevMonth);
     monthNext.addEventListener("click", moveToNextMonth);
 
@@ -65,7 +65,7 @@
 
   <style>
     p {
-      font-size: 14px; /* 폰트 크기를 14픽셀로 증가 */
+      font-size: 14px;
     }
   </style>
 </body>
